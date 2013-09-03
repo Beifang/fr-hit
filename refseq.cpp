@@ -36,7 +36,7 @@
 #ifdef DEBUG
 //for binary data test
 bitset <24> bs1((long)a.s[i].a);
-cout<<bs1;   
+cerr<<bs1;   
 bs1.reset();
 #endif
 
@@ -194,7 +194,7 @@ void RefSeq::t_CalKmerFreq_ab()
             temp_seed = b<=24? (_m[i/12].a>>(24-b))&param.seed_bits : (_m[i/12].a<<(b-24)|_m[i/12+1].a>>48-b)&param.seed_bits;
             index[temp_seed].n++;
 #ifdef DEBUG
-            bitset <22> bs1((long)temp_seed);cout<<bs1<<endl;bs1.reset();
+            bitset <22> bs1((long)temp_seed);cerr<<bs1<<endl;bs1.reset();
 #endif
         }
 

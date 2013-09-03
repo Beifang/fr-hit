@@ -108,7 +108,7 @@ int ReadClass::LoadBatchReads(ifstream &fin)
 
         p->seq.resize(p->length);
 #ifdef DEBUG   // test seq info
-        cout<<" seq "<<p->seq<<endl<<" length "<<p->length<<endl;
+        cerr<<" seq "<<p->seq<<endl<<" length "<<p->length<<endl;
 #endif
     }
     

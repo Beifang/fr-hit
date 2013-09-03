@@ -108,7 +108,7 @@ void Param::SetSeedSize(int n) {
     seed_bits = (1<<(seed_size*2)) - 1;
 #ifdef DEBUG
     bitset <32> bs2((long)seed_bits);
-    cout<<" " <<bs2<<endl;
+    cerr<<" " <<bs2<<endl;
     bs2.reset();
 #endif
 }

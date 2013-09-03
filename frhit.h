@@ -74,7 +74,7 @@ void RunProcess(void) {
         std::cerr <<"missing query file(s)\n";
         exit(1);
     }
-    std::cout << "Read recruitment:\n" 
+    std::cerr << "Read recruitment:\n" 
               << "Query: " 
               << queryReadsFile 
               << "  Reference: " 
@@ -92,7 +92,7 @@ void RunProcess(void) {
     n_aligned = DoReadAlign();
     finRead.close();
     fout.close();
-    std::cout << "Total number of reads recruited: " 
+    std::cerr << "Total number of reads recruited: " 
               << n_aligned 
               << " (" 
               << setprecision(2) 
@@ -107,7 +107,7 @@ void RunProcess(void) {
 
 // Usage
 void usage(void) {
-    std::cout<<"\nUsage:   fr-hit v0.7 [options]\n"
+    std::cerr<<"\nUsage:   fr-hit v0.7 [options]\n"
         <<"       -a   <string>   reads file, *.fasta format\n"
         <<"       -d   <string>   reference genome sequences file, *.fasta format\n"
         <<"       -o   <string>   output recruitments file\n"

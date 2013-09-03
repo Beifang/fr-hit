@@ -306,10 +306,10 @@ class ReadAlign
             int n_prime = n - (seqnum*hsp);  return n_prime < 1/k ? int(1/k) : n_prime;
         }
 
-        void Do_Batch(RefSeq &ref, ReadClass &read_a, ifstream &fin_a, ofstream &fout);
+        void DoBatch(RefSeq &ref, ReadClass &readA, ifstream &finRead, ofstream &fout);
         void GenerateSeeds(int _read_length, WorkingPara &wp);
 
-        //void Do_Batch(RefSeq &ref);
+        //void DoBatch(RefSeq &ref);
         int ConvertBinaySeq(vector<ReadInf>::iterator &_pread, WorkingPara &wp);
         int AlignProcess(RefSeq &ref, vector<ReadInf>::iterator &_pread, string &os, WorkingPara &wp);
         int diag_test_aapn_est_circular(char iseq2[], int len1, int len2, int &best_sum, int &band_left, int &band_right, WorkingPara &wp);

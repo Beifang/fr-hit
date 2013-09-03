@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     try { 
         if (argc == 1) usage();
         Initial_Time();
-        std::cout << "Start at:  " << Curr_Time() << std::endl;
+        std::cerr << "Start at:  " << Curr_Time() << std::endl;
         int noptions = mGetOptions(argc, argv);
 #if defined (_OPENMP)
         if (param.ncpu) omp_set_num_threads(param.ncpu);
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
                 exit(1);
         }
         ref.Run_ConvertBinseq(finDB);
-        std::cout << "Load in " 
+        std::cerr << "Load in " 
                   << ref.total_num 
                   << " reference seqs, total size " 
                   << ref.sum_length 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
                   << " secs passed" 
                   << std::endl;
         ref.CreateIndex();
-        std::cout << "Create refseq k-mer index table. " 
+        std::cerr << "Create refseq k-mer index table. " 
                   << Cal_AllTime() 
                   << " secs passed" 
                   << std::endl;
@@ -59,7 +59,6 @@ int main(int argc, char *argv[]) {
         std::cerr << e.what() << std::endl;
         return 1;
     }
-
     return 0;
 }
 

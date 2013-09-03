@@ -205,7 +205,7 @@ ReadAlign::ReadAlign()
 }
 
 // Entry point for parallel 
-void ReadAlign::Do_Batch(RefSeq &ref, ReadClass &read_a, ifstream &fin_a, ofstream &fout)
+void ReadAlign::DoBatch(RefSeq &ref, ReadClass &readA, ifstream &finRead, ofstream &fout)
 {
     _str_align.clear();
     bit32_t naligned(0);
@@ -226,7 +226,7 @@ void ReadAlign::Do_Batch(RefSeq &ref, ReadClass &read_a, ifstream &fin_a, ofstre
         {
             param.ncpu=omp_get_num_threads();
         }
-        //cout<<param.ncpu<<" cpu used"<<endl;
+        //cerr<<param.ncpu<<" cpu used"<<endl;
         //np = omp_get_num_threads();
 #endif
         while (morereads)
@@ -234,8 +234,8 @@ void ReadAlign::Do_Batch(RefSeq &ref, ReadClass &read_a, ifstream &fin_a, ofstre
 #pragma omp barrier
 #pragma omp single
             {
-                morereads = read_a.LoadBatchReads(fin_a);
-                ImportBatchReads(read_a.num, &read_a.mreads);
+                morereads = readA.LoadBatchReads(finRead);
+                ImportBatchReads(readA.num, &readA.mreads);
             }
             if (morereads)
             {
@@ -270,7 +270,7 @@ void ReadAlign::Do_Batch(RefSeq &ref, ReadClass &read_a, ifstream &fin_a, ofstre
                         fout<<str_align[i]; //result write
                         str_align[i].clear();
                     }
-                    cout << read_a._index << " reads finished. " << Cal_AllTime() << " secs passed" << endl;
+                    cerr << readA._index << " reads finished. " << Cal_AllTime() << " secs passed" << endl;
                     n_aligned += naligned;
                 }
 
@@ -308,9 +308,9 @@ int ReadAlign::ConvertBinaySeq(vector<ReadInf>::iterator &_pread, WorkingPara &w
         {
             wp.bseq[h] = _a;
 #ifdef DEBUG
-            cout<<" h "<<h<<endl;
+            cerr<<" h "<<h<<endl;
             bitset <24> bs((long)wp.bseq[h].a);
-            cout<<" " <<bs<<endl;
+            cerr<<" " <<bs<<endl;
             bs.reset();
 #endif
             h++;
@@ -350,12 +350,12 @@ int ReadAlign::ConvertBinaySeq(vector<ReadInf>::iterator &_pread, WorkingPara &w
     }
     // test iseq and ciseq (only debug)
 #ifdef DEBUG
-    cout << endl;
+    cerr << endl;
     for (i=0; i<_pread->length; i++)
     {
-        cout << int(iseqquery[i]);
+        cerr << int(iseqquery[i]);
     }
-    cout << endl;
+    cerr << endl;
 #endif
 
     return 0;
@@ -373,7 +373,7 @@ void ReadAlign::GenerateSeeds(int _read_length, WorkingPara &wp)
         wp.cseeds[i] = b<=24? (wp.cbseq[i/12].a>>(24-b))&param.seed_bits : (wp.cbseq[i/12].a<<(b-24)|wp.cbseq[i/12+1].a>>48-b)&param.seed_bits;
 #ifdef DEBUG
         bitset <26> bs2((long)cseeds[i]);
-        cout << " " << bs2 << endl;
+        cerr << " " << bs2 << endl;
         bs2.reset();
 #endif 
     }
@@ -632,11 +632,11 @@ int ReadAlign::AlignProcess(RefSeq &ref, vector<ReadInf>::iterator &_pread, stri
             }
             // debug only
 #ifdef DEBUG
-            cout << "len1 " << len1 << " RefBegin " << RefBegin << " RefEnd " << RefEnd << endl;
+            cerr << "len1 " << len1 << " RefBegin " << RefBegin << " RefEnd " << RefEnd << endl;
 #endif
             diag_test_aapn_est_circular(seqjseg, len, len1, best_sum, band_left, band_right, wp);
 #ifdef DEBUG
-            cout << "band_left " << band_left << " band_right " << band_right << endl;
+            cerr << "band_left " << band_left << " band_right " << band_right << endl;
 #endif
             if (best_sum < wp.best_kmers) continue;
 
@@ -1225,10 +1225,10 @@ void ReadAlign::printscorematrix(int **sm, int xlen, int ylen)
     for (int i=0; i<xlen; i++) 
     {
         for (int j=0; j<ylen; j++)
-            cout<<sm[i][j]<<' ';
-        cout<<endl;
+            cerr<<sm[i][j]<<' ';
+        cerr<<endl;
     }
-    cout<<endl;
+    cerr<<endl;
 
 }
 
