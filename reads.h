@@ -25,7 +25,6 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef _READS_H_
 #define _READS_H_
 
@@ -34,63 +33,46 @@
 #include<fstream>
 #include<string>
 #include<vector>
-
 #include "param.h"
-
 using namespace std;
 
 extern Param param;
+const int BatchNum = 1000;
 
-const int BatchNum=1000;
-
-struct ReadInf
-{
-
+struct ReadInf {
     ReadInf()
+        : seq("")
+        , name("")
+        , qual("")
+        , index(0)
+        , length(0)
     {
-        seq = "";
-        name = "";
-        qual = "";
-        index = 0;
-        length = 0;
+        //xxx
     }
-
-    bit32_t index; //serve as id of a read
-
-    string name;   //name of a read
-    string seq;    //sequence
-    string qual;   //quality score
-
+    // serve as id of a read
+    bit32_t index; 
+    // name of a read
+    string name;   
+    // sequence 
+    string seq;    
+    // quality score
+    string qual;  
     int length;    
-
 };
 
-class ReadClass
-{
-
-    public:
-
-        ReadClass()
-        {
-            _index = 0;
-        }
-
-        void InitialIndex()
-        {
-            _index = 0;
-        }
-
-        void CheckFile(ifstream &fin);
-
-        int LoadBatchReads(ifstream &fin);
-
+class ReadClass {
 public:
-        vector< ReadInf > mreads;
+    ReadClass() { _index = 0; }
+    void InitialIndex() { _index = 0; }
+    void CheckFile(ifstream &fin);
+    int LoadBatchReads(ifstream &fin);
+public:
+    vector< ReadInf > mreads;
+    // 0: fq; 1: fa;
+    int _file_format;
+    bit32_t num;
+    bit32_t _index;
 
-        int _file_format;  //0: fq; 1: fa;
-
-        bit32_t num;
-        bit32_t _index;
 };
 
 #endif //_READS_H_

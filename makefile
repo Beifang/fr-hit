@@ -3,7 +3,7 @@ CC=g++
 #FLAGS= -ggdb -pg -O3 -static
 FLAGS=-O3 -static -fopenmp
 
-SOURCE = align refseq main param reads utilities 
+SOURCE = align refseq frhit param reads utilities 
 OBJS= $(patsubst %,%.o,$(SOURCE))
 
 all: fr-hit
