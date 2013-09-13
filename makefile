@@ -1,7 +1,8 @@
 CC=g++
 
 #FLAGS= -ggdb -pg -O3 -static
-FLAGS=-O3 -static -fopenmp
+#FLAGS=-O3 -static -fopenmp
+FLAGS=-O3 -fopenmp
 
 SOURCE = align refseq frhit param reads utilities 
 OBJS= $(patsubst %,%.o,$(SOURCE))

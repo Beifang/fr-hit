@@ -73,7 +73,7 @@ Install
 
 FR-HIT has no any dependency, so just clone FR-HIT repo, and build the fr-hit binary:
 
-        git clone https://github.com/samtools/fr-hit.git
+        git clone https://github.com/Beifang/fr-hit.git
         cd fr-hit
         make
 
