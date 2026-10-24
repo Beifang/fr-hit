@@ -47,7 +47,7 @@ std::ifstream finRead;
 std::ifstream finDB;
 std::ofstream fout;
 
-RefSeq ref;
+RefSeq refSeq;
 Param param;
 ReadClass readA;
 
@@ -57,7 +57,7 @@ unsigned int DoReadAlign() {
     readA.CheckFile(finRead);
     a.ImportFileFormat(readA._file_format);
     a.SetFlag('a');
-    a.DoBatch(ref,readA,finRead,fout);
+    a.DoBatch(refSeq,readA,finRead,fout);
     return a.n_aligned;
 }
 
