@@ -735,7 +735,7 @@ int ReadAlign::AlignProcess(RefSeq &ref, vector<ReadInf>::iterator &_pread, stri
                 else
                 {
                     //0:FR-HIT format
-                    sprintf(_ch, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t+\t%0.2f%\t%s\t%d\t%d\n",
+                    sprintf(_ch, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t+\t%0.2f%%\t%s\t%d\t%d\n",
                             _pread->name.c_str(), _pread->length, eValue,read_cov,talign_info[1]+1,\
                             talign_info[2]+1, read_identity_d, ref.title[Gramunit.chr].name.c_str(), \
                             RefBegin+talign_info[3]+1, RefBegin+talign_info[4]+1);
@@ -759,7 +759,7 @@ int ReadAlign::AlignProcess(RefSeq &ref, vector<ReadInf>::iterator &_pread, stri
                     }
                     else
                     {
-                        sprintf(Outputunit.och, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t+\t%0.2f%\t%s\t%d\t%d\n", \
+                        sprintf(Outputunit.och, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t+\t%0.2f%%\t%s\t%d\t%d\n", \
                                 _pread->name.c_str(),_pread->length,eValue,read_cov,talign_info[1]+1,talign_info[2]+1,\
                                 read_identity_d,ref.title[Gramunit.chr].name.c_str(),RefBegin+talign_info[3]+1,\
                                 RefBegin+talign_info[4]+1); 
@@ -908,7 +908,7 @@ int ReadAlign::AlignProcess(RefSeq &ref, vector<ReadInf>::iterator &_pread, stri
                 else
                 {
                     //0:FR-HIT format
-                    sprintf(_ch, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t-\t%0.2f%\t%s\t%d\t%d\n", _pread->name.c_str(),\
+                    sprintf(_ch, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t-\t%0.2f%%\t%s\t%d\t%d\n", _pread->name.c_str(),\
                             _pread->length,eValue,read_cov,_pread->length-talign_info[1],_pread->length-talign_info[2],\
                             read_identity_d, ref.title[Gramunit.chr].name.c_str(),RefBegin+talign_info[3]+1,\
                             RefBegin+talign_info[4]+1);
@@ -933,7 +933,7 @@ int ReadAlign::AlignProcess(RefSeq &ref, vector<ReadInf>::iterator &_pread, stri
                     }
                     else
                     {
-                        sprintf(Outputunit.och, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t-\t%0.2f%\t%s\t%d\t%d\n", _pread->name.c_str(),\
+                        sprintf(Outputunit.och, "%s\t%dnt\t%.1e\t%d\t%d\t%d\t-\t%0.2f%%\t%s\t%d\t%d\n", _pread->name.c_str(),\
                                 _pread->length,eValue,read_cov,_pread->length-talign_info[1],_pread->length-talign_info[2],\
                                 read_identity_d,ref.title[Gramunit.chr].name.c_str(),RefBegin+talign_info[3]+1,\
                                 RefBegin+talign_info[4]+1);

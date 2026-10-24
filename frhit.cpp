@@ -40,16 +40,16 @@ int main(int argc, char *argv[]) {
                 std::cerr << "fatal error: failed to open ref file\n";
                 exit(1);
         }
-        ref.Run_ConvertBinseq(finDB);
+        refSeq.Run_ConvertBinseq(finDB);
         std::cerr << "Load in " 
-                  << ref.total_num 
+                  << refSeq.total_num 
                   << " reference seqs, total size " 
-                  << ref.sum_length 
+                  << refSeq.sum_length 
                   << " bp. " 
                   << Cal_AllTime() 
                   << " secs passed" 
                   << std::endl;
-        ref.CreateIndex();
+        refSeq.CreateIndex();
         std::cerr << "Create refseq k-mer index table. " 
                   << Cal_AllTime() 
                   << " secs passed" 
